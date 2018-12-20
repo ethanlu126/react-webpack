@@ -2,7 +2,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import LEARNING from './components/learning.jsx'
+import LEARNING from './components/learning'
 
 // const testdiv = <div id="test" title="testdiv">axacacaca</div>
 //P20

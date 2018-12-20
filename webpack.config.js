@@ -22,5 +22,8 @@ module.exports = {
   },
   plugins: [
     htmlPlug
-  ]
+  ],
+  resolve: {
+    extensions: [ '.tsx', '.ts', '.js', '.jsx' ]
+  },
 };
