@@ -2,7 +2,8 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import LEARNING from './components/learning'
+import LEARNING from './components/learning';
+import { Movie } from './components/Movie';
 
 // const testdiv = <div id="test" title="testdiv">axacacaca</div>
 //P20
@@ -23,5 +24,6 @@ ReactDOM.render(
         } */}
         {/* <LEARNING frontend={learningOBJ.frontend} pack={learningOBJ.pack}></LEARNING> */}
         <LEARNING {...learningOBJ}></LEARNING>
+        <Movie></Movie>
     </div>,
     document.getElementById('app'));
