@@ -14,6 +14,12 @@ const learningOBJ = {
     pack: 'webpack'
 }
 
+const topRatedMovies = {
+    first: 'The Shawshank Redemption',
+    second: 'The Godfather',
+    third: 'The Godfather:Part II'
+}
+
 
 ReactDOM.render(
     <div id="test" title="test title">
@@ -24,6 +30,7 @@ ReactDOM.render(
         } */}
         {/* <LEARNING frontend={learningOBJ.frontend} pack={learningOBJ.pack}></LEARNING> */}
         <LEARNING {...learningOBJ}></LEARNING>
-        <Movie></Movie>
+        <hr/>
+        <Movie {...topRatedMovies}></Movie>
     </div>,
     document.getElementById('app'));
