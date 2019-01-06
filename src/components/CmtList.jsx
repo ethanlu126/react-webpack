@@ -1,4 +1,5 @@
 import React from 'react';
+import CmtItem from './CmtItem';
 
 export class CmtList extends React.Component {
     constructor() {
@@ -21,9 +22,3 @@ export class CmtList extends React.Component {
     }
 }
 
-function CmtItem(props) {
-    return <div key={props.id}>
-        <h5>user: {props.user}</h5>
-        <h6>content: {props.content}</h6>
-    </div>
-}
