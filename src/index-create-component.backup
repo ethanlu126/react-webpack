@@ -2,7 +2,8 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { CmtList } from './components/CmtList';
+import LEARNING from './components/learning';
+import { Movie } from './components/Movie';
 
 // const testdiv = <div id="test" title="testdiv">axacacaca</div>
 //P20
@@ -22,6 +23,14 @@ const topRatedMovies = {
 
 ReactDOM.render(
     <div id="test" title="test title">
-        <CmtList></CmtList>
+        {/* {
+            language.map(item => {
+                return <h3 key={language.indexOf(item)}>{item}</h3>
+            })
+        } */}
+        {/* <LEARNING frontend={learningOBJ.frontend} pack={learningOBJ.pack}></LEARNING> */}
+        <LEARNING {...learningOBJ}></LEARNING>
+        <hr/>
+        <Movie {...topRatedMovies}></Movie>
     </div>,
     document.getElementById('app'));
