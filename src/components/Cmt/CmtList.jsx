@@ -16,7 +16,7 @@ export class CmtList extends React.Component {
 
     render() {
         return <div>
-            <h1 className='title'> Chat Room </h1>
+            <h1 className={CmtListCss.title}> Chat Room </h1>
             {this.state.ComentList.map(item => <CmtItem {...item} key={item.id}></CmtItem>)}
         </div>
     }
