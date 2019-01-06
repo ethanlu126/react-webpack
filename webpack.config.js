@@ -17,13 +17,17 @@ module.exports = {
   },
   module: {
     rules: [
-      {test: /\.js|jsx$/ , use: 'babel-loader', exclude: /node_modules/} 
+      { test: /\.js|jsx$/, use: 'babel-loader', exclude: /node_modules/ },
+      { test: /\.css$/, use: ['style-loader', 'css-loader']}
     ]
   },
   plugins: [
     htmlPlug
   ],
   resolve: {
-    extensions: [ '.tsx', '.ts', '.js', '.jsx' ]
+    extensions: ['.tsx', '.ts', '.js', '.jsx'],
+    alias: {
+      '@': path.join(__dirname, './src') // '@' means './src'
+    }
   },
 };

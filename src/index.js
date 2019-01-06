@@ -2,7 +2,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { CmtList } from './components/CmtList';
+import { CmtList } from './components/Cmt/CmtList';
 
 // const testdiv = <div id="test" title="testdiv">axacacaca</div>
 //P20
