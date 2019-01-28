@@ -18,7 +18,8 @@ module.exports = {
   module: {
     rules: [
       { test: /\.js|jsx$/, use: 'babel-loader', exclude: /node_modules/ },
-      { test: /\.css$/, use: ['style-loader', 'css-loader?modules&localIdentName=[path][name]-[local]-[hash:6]']}
+      { test: /\.css$/, use: ['style-loader', 'css-loader']},
+      { test: /\.scss$/, use: ['style-loader', 'css-loader?modules&localIdentName=[path][name]-[local]-[hash:6]', 'sass-loader']},
     ]
   },
   plugins: [

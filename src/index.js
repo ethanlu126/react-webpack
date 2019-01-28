@@ -3,6 +3,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { CmtList } from './components/Cmt/CmtList';
+import BindEvent from './components/Cmt/BindEvent'
 
 // const testdiv = <div id="test" title="testdiv">axacacaca</div>
 //P20
@@ -22,6 +23,9 @@ const topRatedMovies = {
 
 ReactDOM.render(
     <div id="test" title="test title">
-        <CmtList></CmtList>
+        <CmtList>
+        </CmtList>
+        <BindEvent></BindEvent>
+        
     </div>,
     document.getElementById('app'));

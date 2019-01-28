@@ -1,6 +1,6 @@
 import React from 'react';
 import CmtItem from './CmtItem';
-import CmtListCss from './CmtList.css'
+import CmtListCss from './CmtList.scss'
 export class CmtList extends React.Component {
     constructor() {
         super()

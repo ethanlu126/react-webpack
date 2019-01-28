@@ -1,5 +1,5 @@
 import React from 'react';
-import CmtItemCss from './CmtItem.css'
+import CmtItemCss from './CmtItem.scss'
 
 export default function CmtItem(props) {
     return <div id={CmtItemCss.itemBox}>
