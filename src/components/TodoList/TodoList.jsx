@@ -9,6 +9,10 @@ class TodoList extends React.Component {
             inputValue: '',
             list: []
         }
+
+        this.handleInputValue = this.handleInputValue.bind(this);
+        this.handleButtonClick = this.handleButtonClick.bind(this);
+        this.handleDeleteItem = this.handleDeleteItem.bind(this);
     }
 
     render() {
@@ -17,10 +21,10 @@ class TodoList extends React.Component {
                 <div className={TodoListCss.input}>
                     <input
                         value={this.state.inputValue}
-                        onChange={this.handleInputValue.bind(this)}>
+                        onChange={this.handleInputValue}>
                     </input>
                     <button
-                        onClick={this.handleButtonClick.bind(this)}>
+                        onClick={this.handleButtonClick}>
                         confirm
                     </button>
                 </div>
@@ -33,7 +37,7 @@ class TodoList extends React.Component {
                                     content={item}
                                     index={index}
                                     key={index}
-                                    handleDeleteItem={this.handleDeleteItem.bind(this)}
+                                    handleDeleteItem={this.handleDeleteItem}
                                 >
                                 </TodoItem>
                             )
@@ -45,25 +49,39 @@ class TodoList extends React.Component {
     }
 
     handleInputValue(e) {
-        let value = e.target.value;
-        this.setState({
+        const value = e.target.value;
+        // this.setState({
+        //     inputValue: value
+        // });
+        this.setState(() => ({
             inputValue: value
-        });
+        }))
     }
 
     handleButtonClick() {
-        const list = [...this.state.list, this.state.inputValue];
-        this.setState({
+        // const list = [...this.state.list, this.state.inputValue];
+        // this.setState({
+        //     inputValue: '',
+        //     list: list
+        // })
+
+        this.setState((prevState) => ({
             inputValue: '',
-            list: list
-        })
+            list: [...prevState.list, prevState.inputValue]
+        }))
     }
 
     handleDeleteItem(index) {
-        const list = [...this.state.list];
-        list.splice(index, 1);
-        this.setState({
-            list: list
+        // const list = [...this.state.list];
+        // list.splice(index, 1);
+        // this.setState({
+        //     list: list
+        // })
+
+        this.setState((prevState) => {
+            const list = [...prevState.list];
+            list.splice(index, 1);
+            return { list: list }
         })
     }
 }
