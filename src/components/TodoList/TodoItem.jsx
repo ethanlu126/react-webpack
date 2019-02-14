@@ -31,7 +31,7 @@ TodoItem.propTypes = {
 }
 
 // set default value of props (if props were undefined)
-TodoList.defaultProps = {
+TodoItem.defaultProps = {
     test: 'test'
 }
 
