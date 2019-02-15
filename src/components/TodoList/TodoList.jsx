@@ -48,6 +48,10 @@ class TodoList extends React.Component {
         )
     }
 
+    componentDidMount() {
+        //better to use axios at here
+    }
+
     handleInputValue(e) {
         const value = e.target.value;
         // this.setState({
