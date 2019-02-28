@@ -1,6 +1,11 @@
 import React, { Fragment } from 'react';
-import TodoListCss from './TodoList.scss'
-import TodoItem from './TodoItem';
+// import TodoListCss from './TodoList.scss'
+// import TodoItem from './TodoItem';
+import 'antd/dist/antd.css';
+import { Input, Button, List } from 'antd';
+import stroe from '../Store/index.js'
+import store from '../Store/index.js';
+
 
 class TodoList extends React.Component {
     constructor(props) {
@@ -10,41 +15,43 @@ class TodoList extends React.Component {
             list: []
         }
 
+        this.state = stroe.getState();
+
         this.handleInputValue = this.handleInputValue.bind(this);
         this.handleButtonClick = this.handleButtonClick.bind(this);
         this.handleDeleteItem = this.handleDeleteItem.bind(this);
+
+        this.handleStroeChange = this.handleStroeChange.bind(this);
+        store.subscribe(this.handleStroeChange);
     }
 
     render() {
         return (
-            <Fragment>
-                <div className={TodoListCss.input}>
-                    <input
+            <div style={{ 'marginLeft': '10px', 'marginTop': '10px' }}>
+                <div>
+                    <Input
                         value={this.state.inputValue}
-                        onChange={this.handleInputValue}>
-                    </input>
-                    <button
-                        onClick={this.handleButtonClick}>
+                        placeholder={'???'}
+                        style={{ 'width': '300px', 'marginRight': '10px' }}
+                        onChange={this.handleInputValue}
+                    >
+                    </Input>
+                    <Button
+                        type="primary"
+                        onClick={this.handleButtonClick}
+                    >
                         confirm
-                    </button>
+                    </Button>
+
+                    <List style={{ 'width': '300px', 'marginTop': '10px' }}
+                        header={<div>Header</div>}
+                        footer={<div>Footer</div>}
+                        bordered
+                        dataSource={this.state.list}
+                        renderItem={(item,index) => (<List.Item onClick={this.handleDeleteItem.bind(this,index)}>{item}</List.Item>)}
+                    />
                 </div>
-                <ul>
-                    {
-                        this.state.list.map((item, index) => {
-                            return (
-                                <TodoItem
-                                    className={TodoListCss.list_item}
-                                    content={item}
-                                    index={index}
-                                    key={index}
-                                    handleDeleteItem={this.handleDeleteItem}
-                                >
-                                </TodoItem>
-                            )
-                        })
-                    }
-                </ul>
-            </Fragment>
+            </div>
         )
     }
 
@@ -52,41 +59,31 @@ class TodoList extends React.Component {
         //better to use axios at here
     }
 
+    handleStroeChange() {
+        this.setState(store.getState());
+    }
+
     handleInputValue(e) {
-        const value = e.target.value;
-        // this.setState({
-        //     inputValue: value
-        // });
-        this.setState(() => ({
-            inputValue: value
-        }))
+        const action = {
+            type: 'change_input_value',
+            value: e.target.value
+        }
+        store.dispatch(action);
     }
 
     handleButtonClick() {
-        // const list = [...this.state.list, this.state.inputValue];
-        // this.setState({
-        //     inputValue: '',
-        //     list: list
-        // })
-
-        this.setState((prevState) => ({
-            inputValue: '',
-            list: [...prevState.list, prevState.inputValue]
-        }))
+        const action = {
+            type: 'add_todo_item'
+        }
+        store.dispatch(action);
     }
 
     handleDeleteItem(index) {
-        // const list = [...this.state.list];
-        // list.splice(index, 1);
-        // this.setState({
-        //     list: list
-        // })
-
-        this.setState((prevState) => {
-            const list = [...prevState.list];
-            list.splice(index, 1);
-            return { list: list }
-        })
+        const action = {
+            type: 'delete_todo_item',
+            index
+        }
+        stroe.dispatch(action);
     }
 }
 
