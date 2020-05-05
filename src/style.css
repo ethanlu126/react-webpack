@@ -1,0 +1,10 @@
+.app_style {
+    width: 600px;
+    height: 350px;
+}
+
+.rotate_btn {
+    background: url(https://static.codemao.cn/community_official/static/media/css_sprite_codemao.67e7cc3c.svg) no-repeat -88px -66px;
+    width: 48px;
+    height: 48px;
+}

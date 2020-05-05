@@ -1,35 +1,39 @@
-// console.log("aaabb");
-
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { CmtList } from './components/Cmt/CmtList';
-import BindEvent from './components/Cmt/BindEvent'
+import './style.css';
 
-import TodoList from './components/TodoList/TodoList'
+import Unity, { UnityContent } from "react-unity-webgl";
 
-// const testdiv = <div id="test" title="testdiv">axacacaca</div>
-//P20
-const language = ['js', 'ts', 'c#', 'c++'];
-//
-const learningOBJ = {
-    frontend: 'react',
-    pack: 'webpack'
-}
 
-const topRatedMovies = {
-    first: 'The Shawshank Redemption',
-    second: 'The Godfather',
-    third: 'The Godfather:Part II'
+export class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.unityContent = new UnityContent(
+            "./src/MyGame/release.json",
+            "./src/MyGame/UnityLoader.js",
+            {
+                adjustOnWindowResize: true
+            }
+        );
+    }
+
+    btn_onclick() {
+        this.unityContent.send("Cube", "RotateCube");
+    }
+
+    render() {
+        return <div>
+            <Unity unityContent={this.unityContent} />
+            {
+                <div className={'rotate_btn'} onPointerDown={this.btn_onclick.bind(this)} />
+            }
+        </div>;
+    }
 }
 
 
 ReactDOM.render(
     <div id="test" title="test title">
-        {/* <CmtList>
-        </CmtList>
-        <BindEvent></BindEvent> */}
-        
-        <TodoList></TodoList>
-
+        <App></App>
     </div>,
     document.getElementById('app'));
